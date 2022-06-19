@@ -32,7 +32,7 @@ graalvmNative {
     toolchainDetection.set(true)
     binaries {
         named("main") {
-            imageName.set("pterocli")
+            imageName.set("pteroctl")
             mainClass.set("ru.meproject.pterocli.Application")
             debug.set(true) // Determines if debug info should be generated, defaults to false
             verbose.set(true) // Add verbose output, defaults to false
