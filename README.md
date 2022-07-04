@@ -10,7 +10,9 @@ Built with [GraalVM](https://www.graalvm.org/) and [Pterodactyl4J](https://githu
 ## TODO
 - [x] Single file upload
 - [ ] Directory upload
-- [ ] Proper secret handling (API key reuse through config)
+- [x] Send commands (proactive command send)
+- [x] Proper secret handling (API key reuse through config)
 - [ ] Binary for all platforms with GraalVM
 - [ ] Docker image on Alpine
+- [ ] Reactive commands on WebSocket events?
 - [ ] More features for instance management (server creations)

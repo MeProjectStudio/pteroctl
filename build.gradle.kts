@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.spongepowered:configurate-gson:4.1.2")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation("info.picocli:picocli:4.6.3")
     annotationProcessor("info.picocli:picocli-codegen:4.6.3")
     implementation("com.mattmalec:Pterodactyl4J:2.BETA_132")

@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "upload",
-        description = " Upload files to specified server ")
+        description = " Upload files to specified server " )
 public class UploadFile implements Callable<Integer> {
     @CommandLine.Mixin
     private ApiKeyOptions apiKeyOptions;
