@@ -2,7 +2,8 @@ package ru.meproject.pteroctl.commands;
 
 import com.mattmalec.pterodactyl4j.PteroBuilder;
 import picocli.CommandLine;
-import ru.meproject.pteroctl.options.ApiKeyOptions;
+import ru.meproject.pteroctl.options.CredentialsOptions;
+import ru.meproject.pteroctl.options.ServerIdsOption;
 
 import java.util.concurrent.Callable;
 
@@ -10,13 +11,10 @@ import java.util.concurrent.Callable;
         description = " Send console command to servers ")
 public class SendCommand implements Callable<Integer> {
     @CommandLine.Mixin
-    private ApiKeyOptions apiKeyOptions;
+    private CredentialsOptions credentials;
 
-    @CommandLine.Option(names = {"--server", "-s"}, required = true,
-            description = """
-                    Pterodactyl server ID
-                    """)
-    private String serverId;
+    @CommandLine.Mixin
+    private ServerIdsOption servers;
 
     @CommandLine.Parameters(index = "0", paramLabel = "COMMAND",
             description = """
@@ -26,10 +24,12 @@ public class SendCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        final var api = PteroBuilder.createClient(apiKeyOptions.panelUrl(), apiKeyOptions.apiKey());
-        api.retrieveServerByIdentifier(serverId)
-                .flatMap(clientServer -> clientServer.sendCommand(command))
-                .execute();
+        final var api = PteroBuilder.createClient(credentials.panelUrl(), credentials.apiKey());
+        for(var server : servers.get()) {
+            api.retrieveServerByIdentifier(server)
+                    .flatMap(clientServer -> clientServer.sendCommand(command))
+                    .execute();
+        }
         return 0;
     }
 }

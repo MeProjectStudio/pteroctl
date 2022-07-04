@@ -2,7 +2,7 @@ package ru.meproject.pteroctl.commands;
 
 import com.mattmalec.pterodactyl4j.PteroBuilder;
 import picocli.CommandLine;
-import ru.meproject.pteroctl.options.CredentialManager;
+import ru.meproject.pteroctl.util.CredentialManager;
 
 import java.util.concurrent.Callable;
 

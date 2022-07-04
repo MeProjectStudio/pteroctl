@@ -1,4 +1,4 @@
-package ru.meproject.pteroctl.options;
+package ru.meproject.pteroctl.util;
 
 import picocli.CommandLine;
 

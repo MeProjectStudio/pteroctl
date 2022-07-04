@@ -1,12 +1,12 @@
-package ru.meproject.pteroctl.options;
+package ru.meproject.pteroctl.util;
 
 import org.spongepowered.configurate.BasicConfigurationNode;
-import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.gson.GsonConfigurationLoader;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Base64;
 
 public enum CredentialManager {
     INSTANCE;
