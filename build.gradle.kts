@@ -23,7 +23,7 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation("info.picocli:picocli:4.6.3")
     annotationProcessor("info.picocli:picocli-codegen:4.6.3")
-    implementation("com.mattmalec:Pterodactyl4J:2.BETA_132")
+    implementation("com.mattmalec:Pterodactyl4J:2.BETA_134")
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")

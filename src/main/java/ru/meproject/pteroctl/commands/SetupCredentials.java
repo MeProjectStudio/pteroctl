@@ -21,7 +21,9 @@ public class SetupCredentials implements Callable<Integer> {
     public Integer call() throws Exception {
         final var api = PteroBuilder.createClient(panelUrl, apiKey);
         // Test provided panel url and api keys
-        final var account = api.retrieveAccount().execute();
+        final var account = api.retrieveAccount()
+                .onErrorFlatMap(__ -> { throw new RuntimeException("Wrong credentials supplied"); })
+                .execute();
         CredentialManager.INSTANCE.setupCredentials(panelUrl, apiKey);
         return 0;
     }
