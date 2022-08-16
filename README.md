@@ -4,6 +4,8 @@ Binary to access Pterodactyl API in "Infrastructure As Code" style
 
 Inspired by gcloud, doctl, awscli and etc.
 
+Still Work In Progress. Not ready for production use.
+
 ## About
 Built with [GraalVM](https://www.graalvm.org/) and [Pterodactyl4J](https://github.com/mattmalec/Pterodactyl4J)
 
@@ -15,7 +17,7 @@ This can be done with `pteroctl setup` command like so:
 pteroctl setup --url https://panel.example.com --api-key ptlc_0123456789ABCDEFGHIJKlmnopqr
 ```
 This would create `pteroctl.json` file with specified credentials.
-This design allows reuse of config file. For example, we can be added it as CI/CD variable to the pipeline.
+This design allows reuse of config file. For example, it can be added to CI/CD pipeline.
 
 Alternatively you can pass `-u` and `-k` options for each command explicitly.
 ### Send commands
