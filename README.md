@@ -40,20 +40,24 @@ pteroctl file rm file/to/delete -s ad332323
 Note that `pteroctl file` commands consider `/home/container/` as root path, so paths to needed resources need to be specified relatively to it.
 Meaning that actual path to file from example would be `/home/container/file/to/delete`.
 
+## Building
+## Ubuntu, MacOS
+Run `nativeCompile` task
+
+## Windows
+Run `nativeCompile` task from x64 Native Tools Command Prompt for VS 2022
+
 ## TODO
 - [ ] File Management
   - [x] Remove file/directory
   - [x] Upload file 
   - [ ] Compress/Decompress
   - [ ] Download file
-  - [ ] SFTP functionality
-    - [ ] Upload
-    - [ ] Download
 - [ ] Send commands
   - [x] Proactive command send
   - [ ] Reactive command send (WebSocket action)
 - [x] Proper secret handling (Reuse of an API key with config)
   - [ ] Config Base64 encoding for secrets
-- [ ] Binary for all platforms with GraalVM
+- [x] Binary for all platforms with GraalVM
 - [ ] Docker image on Alpine
 - [ ] Instance management (server creation and etc.)

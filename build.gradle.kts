@@ -20,7 +20,6 @@ repositories {
 
 dependencies {
     implementation("org.spongepowered:configurate-gson:4.1.2")
-    implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation("info.picocli:picocli:4.6.3")
     annotationProcessor("info.picocli:picocli-codegen:4.6.3")
     implementation("com.mattmalec:Pterodactyl4J:2.BETA_134")
@@ -33,7 +32,7 @@ graalvmNative {
     binaries {
         named("main") {
             imageName.set("pteroctl")
-            mainClass.set("ru.meproject.pterocli.Application")
+            mainClass.set("ru.meproject.pteroctl.Application")
             debug.set(true) // Determines if debug info should be generated, defaults to false
             verbose.set(true) // Add verbose output, defaults to false
             fallback.set(true) // Sets the fallback mode of native-image, defaults to false
