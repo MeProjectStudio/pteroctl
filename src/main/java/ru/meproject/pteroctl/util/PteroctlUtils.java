@@ -16,4 +16,8 @@ public class PteroctlUtils {
     public static String extractChild(String[] arrayedPath) {
         return arrayedPath[arrayedPath.length-1];
     }
+
+    public static String normalizeSlash(String input) {
+        return input.replace("\\", "/");
+    }
 }

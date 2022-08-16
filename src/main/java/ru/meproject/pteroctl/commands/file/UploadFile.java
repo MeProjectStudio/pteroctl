@@ -1,18 +1,15 @@
 package ru.meproject.pteroctl.commands.file;
 
 import com.mattmalec.pterodactyl4j.PteroBuilder;
-import com.mattmalec.pterodactyl4j.client.entities.ClientServer;
 import picocli.CommandLine;
 import ru.meproject.pteroctl.options.CredentialsOptions;
 import ru.meproject.pteroctl.options.ServerIdsOption;
-import ru.meproject.pteroctl.util.PteroctlUtils;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "upload", aliases = { "up" },
-        description = "Upload files to specified server" )
+        description = "Upload file to specified server" )
 public class UploadFile implements Callable<Integer> {
     @CommandLine.Mixin
     private CredentialsOptions credentials;
@@ -20,28 +17,27 @@ public class UploadFile implements Callable<Integer> {
     @CommandLine.Mixin
     private ServerIdsOption servers;
 
-    @CommandLine.Parameters(index = "0", paramLabel = "REMOTE-DIR", split = "/",
+    @CommandLine.Parameters(index = "0", paramLabel = "REMOTE-DIR",
             description = "Path to directory on the panel")
-    private String[] remotePath;
+    private String remotePath;
 
     @CommandLine.Parameters(index = "1", paramLabel = "LOCAL-PATH",
-            description = "Path to local resource that needs to be uploaded. Can be file or directory.")
-    private File localResource;
+            description = "Path to local resource that needs to be uploaded. Must be a file")
+    private File localFile;
 
     @Override
     public Integer call() throws Exception {
+        if (localFile.isDirectory()) {
+            throw new RuntimeException("Directory upload is not supported");
+        }
         final var api = PteroBuilder.createClient(credentials.panelUrl(), credentials.apiKey());
-        /*for (var server : servers.get()) {
+        for (var server : servers.get()) {
             api.retrieveServerByIdentifier(server)
-                    .flatMap(ClientServer::retrieveDirectory)
-                    .flatMap(rootDir -> {
-                        if (rootDir.getDirectoryByName(PteroctlUtils.extractParent(remotePath)).isEmpty()) {
-                            throw new RuntimeException("No such remote folder /home/container/%s".formatted(remotePath[0]));
-                        }
-                        return rootDir.into(rootDir.getDirectoryByName(remotePath[0]).get());
-                    })
+                    .flatMap(clientServer -> clientServer.retrieveDirectory(remotePath))
+                    .map(directory -> directory.upload().addFile(localFile))
+                    .execute()
                     .execute();
-        }*/
+        }
         return 0;
     }
 }

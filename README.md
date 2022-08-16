@@ -43,8 +43,12 @@ Meaning that actual path to file from example would be `/home/container/file/to/
 ## TODO
 - [ ] File Management
   - [x] Remove file/directory
-  - [ ] Upload file/directory
-  - [ ] Download file/directory
+  - [x] Upload file 
+  - [ ] Compress/Decompress
+  - [ ] Download file
+  - [ ] SFTP functionality
+    - [ ] Upload
+    - [ ] Download
 - [ ] Send commands
   - [x] Proactive command send
   - [ ] Reactive command send (WebSocket action)

@@ -7,7 +7,7 @@ import ru.meproject.pteroctl.util.CredentialManager;
 import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "setup",
-        description = " Setup panel credentials for later usage ")
+        description = "Setup panel credentials for later usage")
 public class SetupCredentials implements Callable<Integer> {
     @CommandLine.Option(names = {"--url", "-u"}, required = true,
             description = "Pterodactyl Panel URL")
