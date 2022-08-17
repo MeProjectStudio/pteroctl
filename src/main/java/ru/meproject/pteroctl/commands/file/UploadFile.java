@@ -34,8 +34,7 @@ public class UploadFile implements Callable<Integer> {
         for (var server : servers.get()) {
             api.retrieveServerByIdentifier(server)
                     .flatMap(clientServer -> clientServer.retrieveDirectory(remotePath))
-                    .map(directory -> directory.upload().addFile(localFile))
-                    .execute()
+                    .flatMap(directory -> directory.upload().addFile(localFile))
                     .execute();
         }
         return 0;
