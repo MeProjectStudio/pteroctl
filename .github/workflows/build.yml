@@ -25,9 +25,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: |
-          ./gradlew nativeCompile
+          ./gradlew nativeCompile -PgradleDebug=false
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: okhttpsslcli-${{ matrix.os }}
-          path: build/native/nativeCompile/pteroctl[!tpdb]
+          name: pteroctl-${{ matrix.os }}
+          path: build/native/nativeCompile/pteroctl/*

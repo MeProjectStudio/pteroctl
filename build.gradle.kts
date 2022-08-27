@@ -1,3 +1,5 @@
+val graalDebug: String? by project
+
 plugins {
     id("java")
     id("org.graalvm.buildtools.native") version "0.9.11"
@@ -33,8 +35,8 @@ graalvmNative {
         named("main") {
             imageName.set("pteroctl")
             mainClass.set("ru.meproject.pteroctl.Application")
-            debug.set(true) // Determines if debug info should be generated, defaults to false
-            verbose.set(true) // Add verbose output, defaults to false
+            debug.set(graalDebug.toBoolean()) // Determines if debug info should be generated, defaults to false
+            verbose.set(graalDebug.toBoolean()) // Add verbose output, defaults to false
             fallback.set(true) // Sets the fallback mode of native-image, defaults to false
             // buildArgs.add("-H:Extra")
             // jvmArgs.add("flag") // Passes 'flag' directly to the JVM running the native image builder
