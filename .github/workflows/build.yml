@@ -68,10 +68,10 @@ jobs:
         # The GitHub token needs the package:write permission for the push to work.
         # This permission is not given to PRs from forked repositories.
         # See: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
-      - name: Login to ${{ env.REGISTRY }}
+      - name: Login to ghcr.io
         uses: docker/login-action@v2
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
