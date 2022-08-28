@@ -56,9 +56,6 @@ jobs:
           tags: |
             type=edge,branch=master
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-          labels: |
-            org.opencontainers.image.description=Docker image for pteroctl
 
       - name: Download pteroctl linux binary
         uses: actions/download-artifact@v3
