@@ -22,9 +22,9 @@ repositories {
 
 dependencies {
     implementation("org.spongepowered:configurate-gson:4.1.2")
-    implementation("info.picocli:picocli:4.6.3")
-    annotationProcessor("info.picocli:picocli-codegen:4.6.3")
-    implementation("com.mattmalec:Pterodactyl4J:2.BETA_134")
+    implementation("info.picocli:picocli:4.7.0")
+    annotationProcessor("info.picocli:picocli-codegen:4.7.0")
+    implementation("com.mattmalec:Pterodactyl4J:2.BETA_140")
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
