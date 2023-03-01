@@ -31,5 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: pteroctl-${{ matrix.os }}
-          path: build/nativeBuild/pteroctl?(.exe)
+          path: pteroctl?(.exe)
+
+
 
