@@ -13,7 +13,7 @@ jobs:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup GraalVM
         uses: graalvm/setup-graalvm@v1
@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: pteroctl-${{ matrix.os }}
-          path: build/native/nativeBuild/pteroctl
+          path: /build/nativeBuild/@(pteroctl|pteroctl.exe)
 
 
 
