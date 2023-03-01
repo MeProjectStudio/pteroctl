@@ -2,7 +2,7 @@ val graalDebug: String? by project
 
 plugins {
     id("java")
-    id("org.graalvm.buildtools.native") version "0.9.11"
+    id("org.graalvm.buildtools.native") version "0.9.4"
 }
 
 group = "ru.meproject"
@@ -29,20 +29,20 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
-graalvmNative {
-    toolchainDetection.set(true)
-    binaries {
-        named("main") {
-            imageName.set("pteroctl")
-            mainClass.set("ru.meproject.pteroctl.Application")
-            debug.set(graalDebug.toBoolean()) // Determines if debug info should be generated, defaults to false
-            verbose.set(graalDebug.toBoolean()) // Add verbose output, defaults to false
-            fallback.set(true) // Sets the fallback mode of native-image, defaults to false
-            // buildArgs.add("-H:Extra")
-            // jvmArgs.add("flag") // Passes 'flag' directly to the JVM running the native image builder
-            configurationFileDirectories.from(file("build/classes/java/main/META-INF/native-image/picocli-generated"))
-        }
-    }
+nativeBuild {
+    imageName.set("pteroctl")
+    mainClass.set("ru.meproject.pteroctl.Application")
+    debug.set(true)
+    verbose.set(true)
+    fallback.set(true)
+    configurationFileDirectories.from(file("build/classes/java/main/META-INF/native-image/picocli-generated"))
+    useFatJar.set(false)
+
+    buildArgs.add("-H:+AddAllCharsets")
+
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    })
 }
 
 tasks.getByName<Test>("test") {
