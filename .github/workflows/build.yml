@@ -38,6 +38,7 @@ jobs:
 
   release:
     name: Create pteroctl release
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Collect artifacts
