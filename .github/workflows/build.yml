@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          native-image-musl: true
+          # native-image-musl: true
 
       - name: Build
         run: |
