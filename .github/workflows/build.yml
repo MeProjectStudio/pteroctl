@@ -62,6 +62,6 @@ jobs:
           draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            pteroctl/artifacts/pteroctl-ubuntu-latest
-            pteroctl/artifacts/pteroctl-windows-latest
-            pteroctl/artifacts/pteroctl-macos-latest
+            artifacts/pteroctl-ubuntu-latest/pteroctl
+            artifacts/pteroctl-windows-latest/pteroctl.exe
+            artifacts/pteroctl-macos-latest/pteroctl
