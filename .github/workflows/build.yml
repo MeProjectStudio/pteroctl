@@ -45,10 +45,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
       - name: Collect artifacts
         uses: actions/download-artifact@v3
         with:
           path: artifacts/
+
+      - name: Show filesystem
+        run: ls -R
 
       - name: Release
         uses: softprops/action-gh-release@v1
