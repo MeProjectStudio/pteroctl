@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-latest]
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
@@ -65,4 +65,3 @@ jobs:
           files: |
             artifacts/pteroctl-ubuntu-latest/pteroctl
             artifacts/pteroctl-windows-latest/pteroctl.exe
-            artifacts/pteroctl-macos-latest/pteroctl
