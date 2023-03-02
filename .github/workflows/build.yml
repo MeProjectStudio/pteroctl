@@ -15,6 +15,10 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
+      - name: Install musl
+        if: ${{ matrix.os }} == ubuntu-latest
+        run: sudo apt-get install -y musl
+
       - name: Setup GraalVM
         uses: graalvm/setup-graalvm@v1
         with:
@@ -22,9 +26,9 @@ jobs:
           java-version: '17'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # native-image-musl: true
+          native-image-musl: true
 
-      - name: Build
+      - name: Build with GraalVM
         run: |
           ./gradlew nativeBuild -PgradleDebug=false
 
@@ -52,6 +56,6 @@ jobs:
           draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            artifacts/pteroctl-ubuntu-latest
-            artifacts/pteroctl-windows-latest
-            artifacts/pteroctl-macos-latest
+            pteroctl/artifacts/pteroctl-ubuntu-latest
+            pteroctl/artifacts/pteroctl-windows-latest
+            pteroctl/artifacts/pteroctl-macos-latest
