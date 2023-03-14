@@ -11,10 +11,10 @@ Built with [GraalVM](https://www.graalvm.org/) and [Pterodactyl4J](https://githu
 
 ## Building
 ## Ubuntu, MacOS
-Run `nativeCompile` task
+Run `nativeBuild` task
 
 ## Windows
-Run `nativeCompile` task from x64 Native Tools Command Prompt for VS 2022
+Run `nativeBuild` task from x64 Native Tools Command Prompt for VS 2022
 
 ## TODO
 - [ ] File Management
