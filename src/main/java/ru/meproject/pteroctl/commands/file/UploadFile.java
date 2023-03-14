@@ -17,13 +17,13 @@ public class UploadFile implements Callable<Integer> {
     @CommandLine.Mixin
     private ServerIdsOption servers;
 
-    @CommandLine.Parameters(index = "0", paramLabel = "REMOTE-DIR",
-            description = "Path to directory on the panel")
-    private String remotePath;
-
-    @CommandLine.Parameters(index = "1", paramLabel = "LOCAL-PATH",
+    @CommandLine.Parameters(index = "0", paramLabel = "LOCAL-PATH",
             description = "Path to local resource that needs to be uploaded. Must be a file")
     private File localFile;
+
+    @CommandLine.Parameters(index = "1", paramLabel = "REMOTE-DIR",
+            description = "Path to directory on the panel")
+    private String remotePath;
 
     @Override
     public Integer call() throws Exception {
