@@ -71,7 +71,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/pteroctl-ubuntu-latest/pteroctl
+          asset_path: ./artifacts/pteroctl-ubuntu-22.04/pteroctl
           asset_name: pteroctl_glibc2.35_amd64
           asset_content_type: application/octet-stream
 
