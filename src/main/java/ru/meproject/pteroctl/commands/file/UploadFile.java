@@ -30,6 +30,9 @@ public class UploadFile implements Callable<Integer> {
         if (localFile.isDirectory()) {
             throw new RuntimeException("Directory upload is not supported");
         }
+        if (!localFile.exists()) {
+            throw new RuntimeException(localFile.getName() + " not found");
+        }
         final var api = PteroBuilder.createClient(credentials.panelUrl(), credentials.apiKey());
         for (var server : servers.get()) {
             api.retrieveServerByIdentifier(server)

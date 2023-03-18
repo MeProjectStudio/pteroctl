@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-22.04]
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
@@ -72,7 +72,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./artifacts/pteroctl-ubuntu-latest/pteroctl
-          asset_name: pteroctl_linux_glibc_amd64
+          asset_name: pteroctl_glibc2.35_amd64
           asset_content_type: application/octet-stream
 
       - name: Upload Windows binary
@@ -82,5 +82,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./artifacts/pteroctl-windows-latest/pteroctl.exe
-          asset_name: pteroctl_windows64
+          asset_name: pteroctl_win64.exe
           asset_content_type: application/octet-stream

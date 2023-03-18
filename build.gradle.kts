@@ -27,6 +27,7 @@ dependencies {
     implementation("com.mattmalec:Pterodactyl4J:2.BETA_140")
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
+    implementation("org.slf4j:slf4j-jdk14:2.0.6")
 }
 
 nativeBuild {
